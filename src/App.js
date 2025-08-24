@@ -72,13 +72,13 @@ const Footer = () => (
       <div className="flex flex-col space-y-1">
         <span className="font-bold">Follow Me</span>
         <div className="flex space-x-2 justify-center md:justify-start">
-          <a href="#" className="hover:text-orange-500">
+          <a href="https://www.linkedin.com/in/aayush-prajapati-481126218/" className="hover:text-orange-500">
             <Linkedin size={20} />
           </a>
-          <a href="#" className="hover:text-orange-500">
+          <a href="https://github.com/AayushPrjapati" className="hover:text-orange-500">
             <Github size={20} />
           </a>
-          <a href="#" className="hover:text-orange-500">
+          <a href="https://x.com/AayushPraj11173" className="hover:text-orange-500">
             <Twitter size={20} />
           </a>
         </div>
