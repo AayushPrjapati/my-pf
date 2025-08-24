@@ -12,6 +12,7 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+@import 'tailwindcss';
 
 .App-header {
   background-color: #282c34;
@@ -36,3 +37,5 @@
     transform: rotate(360deg);
   }
 }
+
+@import "tailwindcss";
