@@ -191,7 +191,7 @@ const ResumeSection = () => (
       Resume
     </h1>
 
-    <div className="grid grid-cols-2 gap-x-12 px-12">
+    <div className="grid grid-cols-2 gap-x-12 px-12 border-b-2 border-gray-200 pb-4 mb-8">
       {/* Left Column */}
       <div className="col-span-1">
         <h2 className="text-xl font-bold text-gray-800">Work Experience</h2>
@@ -211,7 +211,7 @@ const ResumeSection = () => (
       </div>
     </div>
     
-    <div className="grid grid-cols-2 gap-x-12 px-12 mt-12">
+    <div className="grid grid-cols-2 gap-x-12 px-12 mt-12 border-b-2 border-gray-200 pb-4 mb-8">
       {/* Left Column */}
       <div className="col-span-1">
         <h2 className="text-xl font-bold text-gray-800">Education</h2>
