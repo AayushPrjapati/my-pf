@@ -166,16 +166,6 @@ const HomeSection = ({ setActiveSection }) => {
   );
 };
 
-// Other placeholder components
-const ResumeSection = () => (
-  <div className="p-8 bg-white rounded-lg shadow-lg max-w-3xl mx-auto w-full text-center">
-    <h1 className="text-3xl font-bold text-gray-800">My Resume</h1>
-    <p className="mt-4 text-gray-600">
-      This is a placeholder for your resume content.
-    </p>
-  </div>
-);
-
 const ProjectsSection = () => (
   <div className="p-8 bg-white rounded-lg shadow-lg max-w-3xl mx-auto w-full text-center">
     <h1 className="text-3xl font-bold text-gray-800">My Projects</h1>
@@ -191,6 +181,86 @@ const ContactSection = () => (
     <p className="mt-4 text-gray-600">
       This is a placeholder for a contact form or a list of ways to get in touch.
     </p>
+  </div>
+);
+
+// The updated ResumeSection component
+const ResumeSection = () => (
+  <div className="max-w-5xl mx-auto w-full p-8">
+    <h1 className="text-4xl font-bold text-gray-800 mb-8">
+      Resume
+    </h1>
+
+    <div className="grid grid-cols-3 gap-x-12 px-12">
+      {/* Left Column */}
+      <div className="col-span-1">
+        <h2 className="text-xl font-bold text-gray-800">Work Experience</h2>
+      </div>
+
+      {/* Right Column */}
+      <div className="col-span-2 space-y-8">
+        {/* Work Experience content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="text-gray-500">2023-2024</div>
+          <div>
+            <h3 className="text-lg font-semibold">Intern</h3>
+            <p className="mt-1 text-gray-600">
+              As an Intern, I had the opportunity to immerse myself in the software development field. By getting hands-on experience and valuable insights into the industry, I have broadened my perspective on the field. I am looking to grow and apply my skills while fostering professional growth.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div className="grid grid-cols-3 gap-x-12 px-12 mt-12">
+      {/* Left Column */}
+      <div className="col-span-1">
+        <h2 className="text-xl font-bold text-gray-800">Education</h2>
+      </div>
+
+      {/* Right Column */}
+      <div className="col-span-2 space-y-8">
+        {/* Bachelors */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="text-gray-500">2024-2028</div>
+          <div>
+            <h3 className="text-lg font-semibold">Computer Science Engineering | Bachelor's Degree</h3>
+            <p className="mt-1 text-gray-600 italic">
+              Currently Pursuing
+            </p>
+          </div>
+        </div>
+        {/* HSC */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="text-gray-500">2022-2024</div>
+          <div>
+            <h3 className="text-lg font-semibold">HSC Board | Competitive Exams | JEE</h3>
+            <p className="mt-1 text-gray-600">
+              In the education column of my portfolio, I proudly highlight my achievements as a 12th grader, which reflects my commitment to excellence. I have consistently demonstrated my academic prowess by securing a remarkable 98 percentile in JEE Main. This achievement is a testament to my dedication and hard work, setting a strong foundation for my future academic and career pursuits in the field of engineering.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div className="grid grid-cols-3 gap-x-12 px-12 mt-12">
+      {/* Left Column */}
+      <div className="col-span-1">
+        <h2 className="text-xl font-bold text-gray-800">Skills & Expertise</h2>
+      </div>
+
+      {/* Right Column */}
+      <div className="col-span-2 space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="text-gray-500">Tech Interests</div>
+          <p className="text-gray-600">AI/ML, smart web platforms, full stack web development</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="text-gray-500">Languages</div>
+          <p className="text-gray-600">C++, Python, React, Javascript</p>
+        </div>
+      </div>
+    </div>
   </div>
 );
 
