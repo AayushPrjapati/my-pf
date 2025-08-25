@@ -122,7 +122,7 @@ const HomeSection = ({ setActiveSection }) => {
           style={{ transitionDelay: '0s' }}
         >
           <img
-            src="https://placehold.co/256x256/f3f3f3/333333?text=AP"
+            src="./prflpic.jpg"
             alt="Aayush Prajapati"
             className="absolute inset-0 w-full h-full object-cover"
           />
