@@ -1,4 +1,4 @@
-import './output.css'
+
 import { useState, useEffect } from 'react';
 import { CodeXml, Mail, Phone, Linkedin, Github, Twitter } from 'lucide-react';
 
