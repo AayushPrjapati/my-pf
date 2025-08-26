@@ -255,100 +255,131 @@ const ContactSection = () => (
 // The updated ResumeSection component
 const ResumeSection = () => (
   <div className="max-w-5xl mx-auto w-full">
-    <h1 className="text-3xl font-bold text-gray-800 border-b-2 border-gray-200 pb-4 mb-8">
+    <h1 className="text-4xl font-bold text-gray-800 border-b-2 border-gray-200 pb-4 mb-8">
       Resume
     </h1>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 px-12 border-b-2 border-gray-200 pb-4 mb-8">
-      {/* Left Column */}
-      <div className="col-span-1">
-        <h2 className="text-xl font-bold text-gray-800">Work Experience</h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 gap-x-16 border-b-2 border-gray-200 pb-4 mb-8">
+      {/* Column 1: The main heading "Work Experience" */}
+      <div className="md:col-span-1">
+        <h2 className="text-3xl font-bold text-gray-800 font-inter">Work Experience</h2>
       </div>
 
-      {/* Right Column */}
-      <div className="col-span-1">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="text-gray-500">2023-2024</div>
-          <div>
-            <h3 className="text-lg font-semibold">Intern</h3>
-            <p className="mt-1 text-gray-600">
-              As an Intern, I had the opportunity to immerse myself in the software development field. By getting hands-on experience and valuable insights into the industry, I have broadened my perspective on the field. I am looking to grow and apply my skills while fostering professional growth.
-            </p>
-          </div>
+      {/* Column 2: The details of the work experience entry */}
+      <div className="md:col-span-1 flex flex-col md:flex-row md:items-start space-y-4 md:space-y-0 md:space-x-8">
+        {/* Year and Intern section */}
+        <div className="flex-shrink-0">
+          <p className="text-lg font-semibold text-gray-600 font-inter">2025-2026</p>
+        </div>
+
+        {/* Description section */}
+        <div className="md:col-span-1">
+          {/* Intern Title (Heading 5 equivalent) */}
+          <h5 className="font-bold text-xl text-gray-800 font-inter">Intern</h5>
+
+
+          {/* Description */}
+          <p className="font-light text-base text-gray-700 leading-relaxed mt-4 font-inter">
+            As an intern, I had the opportunity to immerse myself in a dynamic work environment, gaining hands-on experience valuable insights into the industry. I collaborated with a talented team, contributing to projects that my skills and knowledge while fostering professional growth.
+          </p>
         </div>
       </div>
-    </div>
+     </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 px-12 mt-12 border-b-2 border-gray-200 pb-4 mb-8">
-      {/* Left Column */}
-      <div className="col-span-1">
-        <h2 className="text-xl font-bold text-gray-800">Education</h2>
-      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 gap-x-16 border-b-2 border-gray-200 pb-4 mb-8">
+                {/* Column 1: The main heading "Education" */}
+                <div className="md:col-span-1">
+                    <h2 className="text-3xl font-bold text-gray-800 font-inter">Education</h2>
+                </div>
+                
+                {/* Column 2: The details of the education entries */}
+                <div className="md:col-span-1 flex flex-col space-y-8">
+                    {/* Bachelors */}
+                    <div className="flex flex-col md:flex-row md:items-start space-y-4 md:space-y-0 md:space-x-8">
+                        {/* Year */}
+                        <div className="flex-shrink-0">
+                            <p className="text-lg font-semibold text-gray-600 font-inter">2024-2028</p>
+                        </div>
+                        {/* Description */}
+                        <div className="w-full">
+                            <h5 className="font-bold text-xl text-gray-800 font-inter">Computer Science Engineering | Bachelor's Degree</h5>
+                            <p className="font-light text-base text-gray-600 italic mt-1 font-inter">
+                                Currently Pursuing
+                            </p>
+                        </div>
+                    </div>
 
-      {/* Right Column */}
-      <div className="col-span-1 space-y-8">
-        {/* Bachelors */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="text-gray-500">2024-2028</div>
-          <div>
-            <h3 className="text-lg font-semibold">Computer Science Engineering | Bachelor's Degree</h3>
-            <p className="mt-1 text-gray-600 italic">
-              Currently Pursuing
-            </p>
-          </div>
-        </div>
-        {/* HSC */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="text-gray-500">2022-2024</div>
-          <div>
-            <h3 className="text-lg font-semibold">HSC Board | Competitive Exams | JEE</h3>
-            <p className="mt-1 text-gray-600">
-              In the education column of my portfolio, I proudly highlight my achievements as a 12th grader, which reflects my commitment to excellence. I have consistently demonstrated my academic prowess by securing a remarkable 98 percentile in JEE Main. This achievement is a testament to my dedication and hard work, setting a strong foundation for my future academic and career pursuits in the field of engineering.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+                    {/* HSC */}
+                    <div className="flex flex-col md:flex-row md:items-start space-y-4 md:space-y-0 md:space-x-8">
+                        {/* Year */}
+                        <div className="flex-shrink-0">
+                            <p className="text-lg font-semibold text-gray-600 font-inter">2022-2024</p>
+                        </div>
+                        {/* Description */}
+                        <div className="w-full">
+                            <h5 className="font-bold text-xl text-gray-800 font-inter">HSC Board | Competitive Exams | JEE</h5>
+                            <p className="font-light text-base text-gray-700 leading-relaxed mt-1 font-inter">
+                                In the education column of my portfolio, I proudly highlight my achievements as a 12th grader, which reflects my commitment to excellence. I have consistently demonstrated my academic prowess by securing a remarkable 98 percentile in JEE Main. This achievement is a testament to my dedication and hard work, setting a strong foundation for my future academic and career pursuits in the field of engineering.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 px-12 mt-12">
-      {/* Left Column */}
-      <div className="col-span-1">
-        <h2 className="text-xl font-bold text-gray-800">Skills & Expertise</h2>
-      </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 gap-x-16">
+                {/* Column 1: The main heading "Skills & Expertise" */}
+                <div className="md:col-span-1">
+                    <h2 className="text-3xl font-bold text-gray-800 font-inter">Skills & Expertise</h2>
+                </div>
+                
+                {/* Column 2: The details of the skills entries */}
+                <div className="md:col-span-1 flex flex-col space-y-4">
+                    {/* Tech Interests */}
+                    <div className="flex flex-col md:flex-row md:items-start space-y-2 md:space-y-0 md:space-x-8">
+                        <div className="flex-shrink-0">
+                            <p className="text-lg font-semibold text-gray-600 font-inter">Tech Interests:</p>
+                        </div>
+                        <div className="w-full">
+                            <p className="font-light text-base text-gray-700 leading-relaxed font-inter">
+                                AI/ML, Smart web platforms, Full stack web development
+                            </p>
+                        </div>
+                    </div>
 
-      {/* Right Column */}
-      <div className="col-span-1 space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="text-gray-500">Tech Interests</div>
-          <p className="text-gray-600">AI/ML, smart web platforms, full stack web development</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="text-gray-500">Languages</div>
-          <p className="text-gray-600">C++, Python, React, Javascript</p>
-        </div>
-      </div>
-    </div>
-  </div>
-);
+                    {/* Languages */}
+                    <div className="flex flex-col md:flex-row md:items-start space-y-2 md:space-y-0 md:space-x-8">
+                        <div className="flex-shrink-0">
+                            <p className="text-lg font-semibold text-gray-600 font-inter">Languages:</p>
+                        </div>
+                        <div className="w-full">
+                            <p className="font-light text-base text-gray-700 leading-relaxed font-inter">
+                                C++, Python, React, Javascript
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+    );
 
-// Main App component to display the entire application
-export default function App() {
+    // Main App component to display the entire application
+    export default function App() {
   const [activeSection, setActiveSection] = useState('home');
 
   const renderContent = () => {
     switch (activeSection) {
       case 'resume':
-        return <ResumeSection />;
-      case 'projects':
-        return <ProjectsSection />;
-      case 'contact':
-        return <ContactSection />;
-      default:
-        return <HomeSection setActiveSection={setActiveSection} />;
+    return <ResumeSection />;
+    case 'projects':
+    return <ProjectsSection />;
+    case 'contact':
+    return <ContactSection />;
+    default:
+    return <HomeSection setActiveSection={setActiveSection} />;
     }
   };
 
-  return (
+    return (
     <div className="bg-[#f3f3f3] min-h-screen flex flex-col font-sans">
       <Header setActiveSection={setActiveSection} />
       <main className="flex-grow flex items-center justify-center p-8 mt-16">
@@ -356,5 +387,5 @@ export default function App() {
       </main>
       <Footer />
     </div>
-  );
+    );
 }
