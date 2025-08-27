@@ -174,171 +174,11 @@ const HomeSection = ({ setActiveSection }) => {
 };
 
 
-// The updated ProjectsSection component
-const ProjectsSection = () => (
-  <div className="max-w-6xl mx-auto px-4 py-10">
-    <h2 className="text-2xl font-bold mb-8">Projects</h2>
-
-
-    {/* Project 1 */}
-    <div className="grid md:grid-cols-2 gap-8 mb-12 items-center">
-      {/* Left: Text */}
-      <div>
-        <h3 className="text-xl font-semibold mb-2">InsightCare</h3>
-        <p className="text-gray-600 text-sm leading-relaxed">
-          InsightCare is a smart healthcare web platform that combines
-          AI-powered diagnosis, lifestyle tools, and 24x7 consultation
-          services. It features early disease prediction (Cancer, Diabetes,
-          Parkinson's), health utilities like BMI and sugar tracking via
-          MediTools, a personal health chatbot (Fitzy), mood-based music
-          recommendations, and secure online consultations — all in a
-          responsive, user-friendly interface.
-        </p>
-      </div>
-      {/* Right: Image */}
-      <a
-        href="https://github.com/AayushPrjapati/InsightCare"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block bg-gray-200 rounded-lg flex items-center justify-center h-64 overflow-hidden hover:bg-gray-300 transition"
-      >
-        <img
-          src="/InsightCarePreview.png"
-          alt="Project Preview"
-          className="object-cover w-full h-full"
-        />
-      </a>
-    </div>
-
-
-    {/* Project 2 */}
-    <div className="grid md:grid-cols-2 gap-8 mb-12 items-center">
-      {/* Left: Image */}
-
-      {/* Right: Text */}
-      <div>
-        <h3 className="text-xl font-semibold mb-2">Project Name 02</h3>
-        <p className="text-gray-600 text-sm leading-relaxed">
-          I'm a paragraph. Click here to add your own text and edit me. It’s
-          easy. Just click “Edit Text” or double click me to add your own
-          content and make changes to the font. I’m a great place for you to
-          tell a story and let your users know a little more about you.
-        </p>
-      </div>
-      <a
-        href="https://your-link-here.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block bg-gray-200 rounded-lg flex items-center justify-center h-64 hover:bg-gray-300 transition"
-      >
-        <img
-          src="/your-image-path.jpg"
-          alt="Project Preview"
-          className="object-cover w-full h-full"
-        />
-      </a>
-    </div>
-
-  </div>
-
-);
-
-
-const ContactSection = () => {
-  const [formData, setFormData] = useState({ firstName: '', email: '', phone: '' });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({ ...prevState, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form data submitted:', formData);
-    // A more user-friendly notification can be used here instead of alert
-    alert('Thank you for your message! This is a demo form. Check the console for data.');
-    setFormData({ firstName: '', email: '', phone: '' });
-  };
-
-  return (
-    <div className="w-full max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-16 items-center p-4">
-      {/* Left Section: Contact Info */}
-      <div className="space-y-8">
-        <h1 className="text-5xl font-bold text-gray-800">Contact</h1>
-        <p className="text-gray-600 text-lg">Looking forward to hearing from you</p>
-
-        <div className="space-y-4">
-          <div>
-            <h3 className="font-semibold text-gray-800 text-xl">Phone</h3>
-            <p className="text-gray-600">+91 9879401314</p>
-          </div>
-          <div>
-            <h3 className="font-semibold text-gray-800 text-xl">Email</h3>
-            <p className="text-gray-600">prajapati.ayush501@gmail.com</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Right Section: Contact Form */}
-      <div className="bg-white p-8 rounded-lg shadow-md">
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">First name</label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
-              className="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <Globe className="h-5 w-5 text-gray-400" />
-              </div>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className="block w-full pl-10 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
-              />
-            </div>
-          </div>
-
-          <button
-            type="submit"
-            className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-md font-bold text-white bg-black hover:bg-gray-800 focus:outline-none transition-colors"
-          >
-            Submit
-          </button>
-        </form>
-      </div>
-    </div>
-  );
-};
 
 // The updated ResumeSection component
 const ResumeSection = () => (
-  <div className="max-w-5xl mx-auto w-full">
-    <h1 className="text-4xl font-bold text-gray-800 border-b-2 border-gray-200 pb-4 mb-8">
+  <div className="max-w-4xl mx-auto px-4 py-10">
+    <h1 className="text-4xl font-semibold tracking-tight text-black border-b-2 border-gray-200 pb-4 mb-8">
       Resume
     </h1>
 
@@ -465,6 +305,225 @@ const ResumeSection = () => (
     </div>
   </div>
 );
+
+// The updated ProjectsSection component
+const ProjectsSection = () => (
+  <div className="max-w-6xl mx-auto px-4 py-10">
+    <h1 className="text-4xl font-semibold tracking-tight text-black border-b-2 border-gray-200 pb-4 mb-8">
+      Projects
+    </h1>
+
+    {/* Project 1 */}
+    <div className="grid md:grid-cols-2 gap-8 mb-12 items-center">
+      {/* Left: Text */}
+      <div>
+        <h3 className="text-xl font-semibold mb-2">InsightCare</h3>
+        <p className="text-gray-600 font-semibold font-light text-black text-sm leading-relaxed">
+          InsightCare is a smart healthcare web platform that combines
+          AI-powered diagnosis, lifestyle tools, and 24x7 consultation
+          services. It features early disease prediction (Cancer, Diabetes,
+          Parkinson's), health utilities like BMI and sugar tracking via
+          MediTools, a personal health chatbot (Fitzy), mood-based music
+          recommendations, and secure online consultations — all in a
+          responsive, user-friendly interface.
+        </p>
+      </div>
+      {/* Right: Image */}
+      <a
+        href="https://github.com/AayushPrjapati/InsightCare"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block bg-gray-200 rounded-lg flex items-center justify-center h-64 overflow-hidden hover:bg-gray-300 transition"
+      >
+        <img
+          src="/InsightCarePreview.png"
+          alt="Project Preview"
+          className="object-cover w-full h-full"
+        />
+      </a>
+    </div>
+
+
+    {/* Project 2 */}
+    <div className="grid md:grid-cols-2 gap-8 mb-12 items-center">
+      {/* Left: Image */}
+
+      {/* Right: Text */}
+      <div>
+        <h3 className="text-xl font-semibold mb-2">Project Name 02</h3>
+        <p className="text-gray-600 text-sm leading-relaxed">
+          I'm a paragraph. Click here to add your own text and edit me. It’s
+          easy. Just click “Edit Text” or double click me to add your own
+          content and make changes to the font. I’m a great place for you to
+          tell a story and let your users know a little more about you.
+        </p>
+      </div>
+      <a
+        href="https://your-link-here.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block bg-gray-200 rounded-lg flex items-center justify-center h-64 hover:bg-gray-300 transition"
+      >
+        <img
+          src="/your-image-path.jpg"
+          alt="Project Preview"
+          className="object-cover w-full h-full"
+        />
+      </a>
+    </div>
+
+  </div>
+
+);
+
+const ContactSection = () => {
+  
+  return (
+    // Main container with a minimal background color and reduced vertical padding
+    <div className="bg-[#f3f3f3] py-8 px-4 sm:px-6 lg:px-8 w-full max-w-4xl mx-auto">
+      {/* Header section with minimal margins */}
+      <div className="mx-auto max-w-2xl text-left border-b-2 border-gray-200 mb-2">
+        <h2 className="text-balance text-2xl font-semibold tracking-tight text-black sm:text-3xl">Contact Me</h2>
+        <p className="mt-1 text-base text-gray-800">✨ “Let’s build something amazing together — feel free to reach out!”</p>
+      </div>
+      {/* Form element with reduced top margin */}
+      <form action="#" method="POST" className="mx-auto mt-4 max-w-xl">
+        {/* Grid layout for form fields, reduced gap */}
+        <div className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
+          {/* First Name field */}
+          <div>
+            <label htmlFor="first-name" className="block text-sm/6 font-semibold text-black">First name</label>
+            <div className="mt-1.5">
+              <input
+                id="first-name"
+                type="text"
+                name="first-name"
+                autoComplete="given-name"
+                className="block w-full rounded-md bg-white px-3.5 py-1.5 text-base text-black outline outline-1 -outline-offset-1 outline-black/10 placeholder:text-gray-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
+              />
+            </div>
+          </div>
+          {/* Last Name field */}
+          <div>
+            <label htmlFor="last-name" className="block text-sm/6 font-semibold text-black">Last name</label>
+            <div className="mt-1.5">
+              <input
+                id="last-name"
+                type="text"
+                name="last-name"
+                autoComplete="family-name"
+                className="block w-full rounded-md bg-white px-3.5 py-1.5 text-base text-black outline outline-1 -outline-offset-1 outline-black/10 placeholder:text-gray-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
+              />
+            </div>
+          </div>
+          {/* Company field */}
+          <div className="sm:col-span-2">
+            <label htmlFor="company" className="block text-sm/6 font-semibold text-black">Company</label>
+            <div className="mt-1.5">
+              <input
+                id="company"
+                type="text"
+                name="company"
+                autoComplete="organization"
+                className="block w-full rounded-md bg-white px-3.5 py-1.5 text-base text-black outline outline-1 -outline-offset-1 outline-black/10 placeholder:text-gray-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
+              />
+            </div>
+          </div>
+          {/* Email field */}
+          <div className="sm:col-span-2">
+            <label htmlFor="email" className="block text-sm/6 font-semibold text-black">Email</label>
+            <div className="mt-1.5">
+              <input
+                id="email"
+                type="email"
+                name="email"
+                autoComplete="email"
+                className="block w-full rounded-md bg-white px-3.5 py-1.5 text-base text-black outline outline-1 -outline-offset-1 outline-black/10 placeholder:text-gray-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
+              />
+            </div>
+          </div>
+          {/* Phone number field with country code */}
+          <div className="sm:col-span-2">
+            <label htmlFor="phone-number" className="block text-sm/6 font-semibold text-black">Phone number</label>
+            <div className="mt-1.5">
+              <div className="flex rounded-md bg-white outline outline-1 -outline-offset-1 outline-black/10 has-[input:focus-within]:outline has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-indigo-500">
+                <div className="grid shrink-0 grid-cols-1 focus-within:relative">
+                  <select
+                    id="country"
+                    name="country"
+                    autoComplete="country"
+                    aria-label="Country"
+                    className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-transparent py-1.5 pl-3.5 pr-7 text-base text-gray-400 placeholder:text-gray-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                  >
+                    <option>IND</option>
+                    <option>US</option>
+                    <option>CA</option>
+                    <option>EU</option>
+                  </select>
+                  <svg viewBox="0 0 16 16" fill="currentColor" data-slot="icon" aria-hidden="true" className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-black sm:size-4">
+                    <path d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" fillRule="evenodd" />
+                  </svg>
+                </div>
+                <input
+                  id="phone-number"
+                  type="text"
+                  name="phone-number"
+                  placeholder="123-456-7890"
+                  className="block min-w-0 grow bg-transparent py-1.5 pl-1 pr-3 text-base text-black placeholder:text-gray-500 focus:outline focus:outline-0 sm:text-sm/6"
+                />
+              </div>
+            </div>
+          </div>
+          {/* Message textarea */}
+          <div className="sm:col-span-2">
+            <label htmlFor="message" className="block text-sm/6 font-semibold text-black">Message</label>
+            <div className="mt-1.5">
+              <textarea
+                id="message"
+                name="message"
+                rows={3} // Reduced rows to save space
+                className="block w-full rounded-md bg-white px-3.5 py-1.5 text-base text-black outline outline-1 -outline-offset-1 outline-black/10 placeholder:text-gray-500 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
+                defaultValue={''}
+              />
+            </div>
+          </div>
+          {/* Privacy policy checkbox */}
+          <div className="flex gap-x-4 sm:col-span-2">
+            <div className="flex h-6 items-center">
+              <div className="group relative inline-flex w-8 shrink-0 rounded-full bg-black/5 p-px outline-offset-2 outline-indigo-500 ring-1 ring-inset ring-black/10 transition-colors duration-200 ease-in-out has-[:checked]:bg-indigo-500 has-[:focus-visible]:outline has-[:focus-visible]:outline-2">
+                <span className="size-4 rounded-full bg-white shadow-sm ring-1 ring-white/5 transition-transform duration-200 ease-in-out group-has-[:checked]:translate-x-3.5"></span>
+                <input
+                  id="agree-to-policies"
+                  type="checkbox"
+                  name="agree-to-policies"
+                  aria-label="Agree to policies"
+                  className="absolute inset-0 appearance-none focus:outline-none"
+                />
+              </div>
+            </div>
+            <label htmlFor="agree-to-policies" className="text-sm/6 text-gray-800">
+              By selecting this, you agree to our{' '}
+              <a href="#" className="whitespace-nowrap font-semibold text-indigo-400">
+                privacy policy
+              </a>
+              .
+            </label>
+          </div>
+        </div>
+        {/* Submit button */}
+        <div className="mt-6">
+          <button
+            type="submit"
+            className="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+          >
+            Let's talk
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
 
 // Main App component to display the entire application
 export default function App() {
