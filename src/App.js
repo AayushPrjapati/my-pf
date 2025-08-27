@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { CodeXml, Mail, Phone, Linkedin, Github, Twitter } from 'lucide-react';
+import { CodeXml, Mail, Phone, Linkedin, Github, Twitter, MapPin, Calendar, GraduationCap, Briefcase, Code, Globe, User} from 'lucide-react';
 
 // The Header component
 const Header = ({ setActiveSection }) => {
@@ -242,15 +242,96 @@ const ProjectsSection = () => (
 );
 
 
+const ContactSection = () => {
+  const [formData, setFormData] = useState({ firstName: '', email: '', phone: '' });
 
-const ContactSection = () => (
-  <div className="p-8 bg-white rounded-lg shadow-lg max-w-3xl mx-auto w-full text-center">
-    <h1 className="text-3xl font-bold text-gray-800">Contact Me</h1>
-    <p className="mt-4 text-gray-600">
-      This is a placeholder for a contact form or a list of ways to get in touch.
-    </p>
-  </div>
-);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({ ...prevState, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form data submitted:', formData);
+    // A more user-friendly notification can be used here instead of alert
+    alert('Thank you for your message! This is a demo form. Check the console for data.');
+    setFormData({ firstName: '', email: '', phone: '' });
+  };
+
+  return (
+    <div className="w-full max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-16 items-center p-4">
+      {/* Left Section: Contact Info */}
+      <div className="space-y-8">
+        <h1 className="text-5xl font-bold text-gray-800">Contact</h1>
+        <p className="text-gray-600 text-lg">Looking forward to hearing from you</p>
+        
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-semibold text-gray-800 text-xl">Phone</h3>
+            <p className="text-gray-600">+91 9879401314</p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-gray-800 text-xl">Email</h3>
+            <p className="text-gray-600">prajapati.ayush501@gmail.com</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Right Section: Contact Form */}
+      <div className="bg-white p-8 rounded-lg shadow-md">
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">First name</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              className="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+            />
+          </div>
+          
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+            />
+          </div>
+          
+          <div>
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <Globe className="h-5 w-5 text-gray-400" />
+              </div>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className="block w-full pl-10 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+              />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-md font-bold text-white bg-black hover:bg-gray-800 focus:outline-none transition-colors"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
 
 // The updated ResumeSection component
 const ResumeSection = () => (
@@ -259,107 +340,128 @@ const ResumeSection = () => (
       Resume
     </h1>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 gap-x-16 border-b-2 border-gray-200 pb-4 mb-8">
-      {/* Column 1: The main heading "Work Experience" */}
-      <div className="md:col-span-1">
-        <h2 className="text-3xl font-bold text-gray-800 font-inter">Work Experience</h2>
-      </div>
+     <div className="space-y-8">
 
-      {/* Column 2: The details of the work experience entry */}
-      <div className="md:col-span-1 flex flex-col md:flex-row md:items-start space-y-4 md:space-y-0 md:space-x-8">
-        {/* Year and Intern section */}
-        <div className="flex-shrink-0">
-          <p className="text-lg font-semibold text-gray-600 font-inter">2025-2026</p>
-        </div>
+            {/* Work Experience Section */}
+            <section className="bg-white rounded-lg shadow-md p-6 border-l-4 border-green-500">
+              <div className="flex items-center gap-3 mb-6">
+                <Briefcase className="w-6 h-6 text-green-600" />
+                <h2 className="text-2xl font-bold text-gray-800">Work Experience</h2>
+              </div>
 
-        {/* Description section */}
-        <div className="md:col-span-1">
-          {/* Intern Title (Heading 5 equivalent) */}
-          <h5 className="font-bold text-xl text-gray-800 font-inter">Intern</h5>
+              <div className="relative">
+                <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200"></div>
 
-
-          {/* Description */}
-          <p className="font-light text-base text-gray-700 leading-relaxed mt-4 font-inter">
-            As an intern, I had the opportunity to immerse myself in a dynamic work environment, gaining hands-on experience valuable insights into the industry. I collaborated with a talented team, contributing to projects that my skills and knowledge while fostering professional growth.
-          </p>
-        </div>
-      </div>
-     </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 gap-x-16 border-b-2 border-gray-200 pb-4 mb-8">
-                {/* Column 1: The main heading "Education" */}
-                <div className="md:col-span-1">
-                    <h2 className="text-3xl font-bold text-gray-800 font-inter">Education</h2>
+                <div className="relative pl-10 pb-6">
+                  <div className="absolute left-2 w-4 h-4 bg-green-500 rounded-full border-2 border-white shadow"></div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Calendar className="w-4 h-4 text-gray-500" />
+                    <span className="text-sm font-medium text-gray-500">2025-2026</span>
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">Intern</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    As an intern, I had the opportunity to immerse myself in a dynamic work environment,
+                    gaining hands-on experience and valuable insights into the industry. I collaborated
+                    with a talented team, contributing to projects that enhanced my skills and knowledge
+                    while fostering professional growth.
+                  </p>
                 </div>
-                
-                {/* Column 2: The details of the education entries */}
-                <div className="md:col-span-1 flex flex-col space-y-8">
-                    {/* Bachelors */}
-                    <div className="flex flex-col md:flex-row md:items-start space-y-4 md:space-y-0 md:space-x-8">
-                        {/* Year */}
-                        <div className="flex-shrink-0">
-                            <p className="text-lg font-semibold text-gray-600 font-inter">2024-2028</p>
-                        </div>
-                        {/* Description */}
-                        <div className="w-full">
-                            <h5 className="font-bold text-xl text-gray-800 font-inter">Computer Science Engineering | Bachelor's Degree</h5>
-                            <p className="font-light text-base text-gray-600 italic mt-1 font-inter">
-                                Currently Pursuing
-                            </p>
-                        </div>
-                    </div>
+              </div>
+            </section>
 
-                    {/* HSC */}
-                    <div className="flex flex-col md:flex-row md:items-start space-y-4 md:space-y-0 md:space-x-8">
-                        {/* Year */}
-                        <div className="flex-shrink-0">
-                            <p className="text-lg font-semibold text-gray-600 font-inter">2022-2024</p>
-                        </div>
-                        {/* Description */}
-                        <div className="w-full">
-                            <h5 className="font-bold text-xl text-gray-800 font-inter">HSC Board | Competitive Exams | JEE</h5>
-                            <p className="font-light text-base text-gray-700 leading-relaxed mt-1 font-inter">
-                                In the education column of my portfolio, I proudly highlight my achievements as a 12th grader, which reflects my commitment to excellence. I have consistently demonstrated my academic prowess by securing a remarkable 98 percentile in JEE Main. This achievement is a testament to my dedication and hard work, setting a strong foundation for my future academic and career pursuits in the field of engineering.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {/* Education Section */}
+            <section className="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-500">
+              <div className="flex items-center gap-3 mb-6">
+                <GraduationCap className="w-6 h-6 text-blue-600" />
+                <h2 className="text-2xl font-bold text-gray-800">Education</h2>
+              </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 gap-x-16">
-                {/* Column 1: The main heading "Skills & Expertise" */}
-                <div className="md:col-span-1">
-                    <h2 className="text-3xl font-bold text-gray-800 font-inter">Skills & Expertise</h2>
-                </div>
-                
-                {/* Column 2: The details of the skills entries */}
-                <div className="md:col-span-1 flex flex-col space-y-4">
-                    {/* Tech Interests */}
-                    <div className="flex flex-col md:flex-row md:items-start space-y-2 md:space-y-0 md:space-x-8">
-                        <div className="flex-shrink-0">
-                            <p className="text-lg font-semibold text-gray-600 font-inter">Tech Interests:</p>
-                        </div>
-                        <div className="w-full">
-                            <p className="font-light text-base text-gray-700 leading-relaxed font-inter">
-                                AI/ML, Smart web platforms, Full stack web development
-                            </p>
-                        </div>
-                    </div>
+              <div className="relative">
+                <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200"></div>
 
-                    {/* Languages */}
-                    <div className="flex flex-col md:flex-row md:items-start space-y-2 md:space-y-0 md:space-x-8">
-                        <div className="flex-shrink-0">
-                            <p className="text-lg font-semibold text-gray-600 font-inter">Languages:</p>
-                        </div>
-                        <div className="w-full">
-                            <p className="font-light text-base text-gray-700 leading-relaxed font-inter">
-                                C++, Python, React, Javascript
-                            </p>
-                        </div>
-                    </div>
+                {/* Current Education */}
+                <div className="relative pl-10 pb-6">
+                  <div className="absolute left-2 w-4 h-4 bg-blue-500 rounded-full border-2 border-white shadow"></div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Calendar className="w-4 h-4 text-gray-500" />
+                    <span className="text-sm font-medium text-gray-500">2024-2028</span>
+                    <span className="text-sm bg-green-100 text-green-700 px-2 py-1 rounded-full">Currently Pursuing</span>
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-1">Bachelor's Degree</h3>
+                  <p className="text-blue-600 font-medium mb-2">Computer Science Engineering</p>
                 </div>
-            </div>
-            </div>
+
+                {/* HSC */}
+                <div className="relative pl-10">
+                  <div className="absolute left-2 w-4 h-4 bg-blue-500 rounded-full border-2 border-white shadow"></div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Calendar className="w-4 h-4 text-gray-500" />
+                    <span className="text-sm font-medium text-gray-500">2022-2024</span>
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-1">HSC Board | Competitive Exams</h3>
+                  <p className="text-blue-600 font-medium mb-2">JEE Main - 98 Percentile</p>
+                  <p className="text-gray-600 leading-relaxed">
+                    In the education column of my portfolio, I proudly highlight my achievements as a
+                    12th standard student with a focus on academic excellence. I have consistently
+                    demonstrated my commitment to learning, culminating in a remarkable 98 percentile
+                    in JEE Main examination. This achievement reflects my dedication and hard work,
+                    setting a strong foundation for my future academic and career pursuits in the
+                    field of engineering.
+                  </p>
+                </div>
+              </div>
+            </section>
+            
+            {/* Skills & Expertise */}
+            <section className="bg-white rounded-lg shadow-md p-6 border-l-4 border-purple-500">
+              <div className="flex items-center gap-3 mb-6">
+                <Code className="w-6 h-6 text-purple-600" />
+                <h2 className="text-xl font-bold text-gray-800">Skills & Expertise</h2>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-semibold text-gray-700 mb-2">Tech Interests</h3>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">AI/ML</span>
+                    <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">Smart Web Platforms</span>
+                    <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">Healthcare Technology</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="font-semibold text-gray-700 mb-2">Programming Languages</h3>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">C++</span>
+                      <div className="w-24 bg-gray-200 rounded-full h-2">
+                        <div className="bg-blue-500 h-2 rounded-full w-5/6"></div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">Python</span>
+                      <div className="w-24 bg-gray-200 rounded-full h-2">
+                        <div className="bg-blue-500 h-2 rounded-full w-4/5"></div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">React</span>
+                      <div className="w-24 bg-gray-200 rounded-full h-2">
+                        <div className="bg-blue-500 h-2 rounded-full w-3/4"></div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-600">JavaScript</span>
+                      <div className="w-24 bg-gray-200 rounded-full h-2">
+                        <div className="bg-blue-500 h-2 rounded-full w-4/5"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          </div>
     );
 
     // Main App component to display the entire application
