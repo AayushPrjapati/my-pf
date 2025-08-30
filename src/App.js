@@ -144,29 +144,28 @@ const HomeSection = ({ setActiveSection }) => {
 
           {/* Action Buttons */}
           <div className="flex justify-center lg:justify-start space-x-4 mt-6">
-            <button
-              onClick={() => setActiveSection('resume')}
-              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transform hover:scale-105 ring-2 ring-orange-400 bg-orange-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'} transition-colors duration-200 transition-[transform,opacity] duration-700 ease-in-out`}
-              style={{ transitionDelay: '0.4s' }}
-            >
-              Resume
-            </button>
-            <button
-              onClick={() => setActiveSection('projects')}
-              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transform hover:scale-105 ring-2 ring-red-400 bg-red-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'} transition-colors duration-200 transition-[transform,opacity] duration-700 ease-in-out`}
-              style={{ transitionDelay: '0.6s' }}
-            >
-              Projects
-            </button>
-            <button
-              onClick={() => setActiveSection('contact')}
-              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transform hover:scale-105 ring-2 ring-cyan-400 bg-cyan-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'} transition-colors duration-200 transition-[transform,opacity] duration-700 ease-in-out`}
-              style={{ transitionDelay: '0.8s' }}
-            >
-              Contact
-            </button>
-
-          </div>
+  <button
+    onClick={() => setActiveSection('resume')}
+    className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-all duration-700 hover:duration-300 hover:ease-out transform hover:scale-105 ring-2 ring-orange-400 bg-orange-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+    style={{ transitionDelay: '0.4s' }}
+  >
+    Resume
+  </button>
+  <button
+    onClick={() => setActiveSection('projects')}
+    className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-all duration-700 hover:duration-300 hover:ease-out transform hover:scale-105 ring-2 ring-red-400 bg-red-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+    style={{ transitionDelay: '0.6s' }}
+  >
+    Projects
+  </button>
+  <button
+    onClick={() => setActiveSection('contact')}
+    className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-all duration-700 hover:duration-300 hover:ease-out transform hover:scale-105 ring-2 ring-cyan-400 bg-cyan-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+    style={{ transitionDelay: '0.8s' }}
+  >
+    Contact
+  </button>
+</div>
         </div>
       </div>
     </div>
@@ -377,7 +376,7 @@ const ProjectsSection = () => (
 );
 
 const ContactSection = () => {
-  
+
   return (
     // Main container with a minimal background color and reduced vertical padding
     <div className="bg-[#f3f3f3] py-8 px-4 sm:px-6 lg:px-8 w-full max-w-4xl mx-auto">
