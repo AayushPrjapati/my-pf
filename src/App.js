@@ -1,8 +1,9 @@
-
 import { useState, useEffect } from 'react';
+// Import motion and AnimatePresence from framer-motion
+import { motion, AnimatePresence } from 'framer-motion';
 import { CodeXml, Mail, Phone, Linkedin, Github, Twitter, MapPin, Calendar, GraduationCap, Briefcase, Code, Globe, User } from 'lucide-react';
 
-// The Header component
+// The Header component (No changes)
 const Header = ({ setActiveSection }) => {
   return (
     <header className="fixed top-0 left-0 w-full z-10 bg-[#f3f3f3] shadow-sm">
@@ -57,7 +58,7 @@ const Header = ({ setActiveSection }) => {
   );
 };
 
-// The Footer component
+// The Footer component (No changes)
 const Footer = () => (
   <footer className="w-full bg-[#f3f3f3] text-gray-600 py-6 px-12 border-t border-gray-200">
     <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-sm text-center md:text-left">
@@ -91,7 +92,7 @@ const Footer = () => (
 
       {/* Copyright */}
       <div className="flex flex-col space-y-1 md:text-right md:ml-auto">
-        <span className="font-bold md:hidden">Copyright</span>
+        <span className="font-bold md-hidden">Copyright</span>
         <p>
           &copy; 2025 Aayush Prajapati.<br />Portfolio Website.
         </p>
@@ -100,7 +101,7 @@ const Footer = () => (
   </footer>
 );
 
-// The HomeSection component with centered content
+// The HomeSection component with centered content (No changes)
 const HomeSection = ({ setActiveSection }) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -144,37 +145,35 @@ const HomeSection = ({ setActiveSection }) => {
 
           {/* Action Buttons */}
           <div className="flex justify-center lg:justify-start space-x-4 mt-6">
-  <button
-    onClick={() => setActiveSection('resume')}
-    className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-all duration-700 hover:duration-300 hover:ease-out transform hover:scale-105 ring-2 ring-orange-400 bg-orange-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
-    style={{ transitionDelay: '0.4s' }}
-  >
-    Resume
-  </button>
-  <button
-    onClick={() => setActiveSection('projects')}
-    className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-all duration-700 hover:duration-300 hover:ease-out transform hover:scale-105 ring-2 ring-red-400 bg-red-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
-    style={{ transitionDelay: '0.6s' }}
-  >
-    Projects
-  </button>
-  <button
-    onClick={() => setActiveSection('contact')}
-    className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-all duration-700 hover:duration-300 hover:ease-out transform hover:scale-105 ring-2 ring-cyan-400 bg-cyan-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
-    style={{ transitionDelay: '0.8s' }}
-  >
-    Contact
-  </button>
-</div>
+            <button
+              onClick={() => setActiveSection('resume')}
+              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-all duration-700 hover:duration-300 hover:ease-out transform hover:scale-105 ring-2 ring-orange-400 bg-orange-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+              style={{ transitionDelay: '0.4s' }}
+            >
+              Resume
+            </button>
+            <button
+              onClick={() => setActiveSection('projects')}
+              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-all duration-700 hover:duration-300 hover:ease-out transform hover:scale-105 ring-2 ring-red-400 bg-red-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+              style={{ transitionDelay: '0.6s' }}
+            >
+              Projects
+            </button>
+            <button
+              onClick={() => setActiveSection('contact')}
+              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-all duration-700 hover:duration-300 hover:ease-out transform hover:scale-105 ring-2 ring-cyan-400 bg-cyan-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+              style={{ transitionDelay: '0.8s' }}
+            >
+              Contact
+            </button>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-
-
-// The updated ResumeSection component
+// The updated ResumeSection component (No changes)
 const ResumeSection = () => (
   <div className="max-w-4xl mx-auto px-4 py-10">
     <h1 className="text-4xl font-semibold tracking-tight text-black border-b-2 border-gray-200 pb-4 mb-8">
@@ -305,7 +304,7 @@ const ResumeSection = () => (
   </div>
 );
 
-// The updated ProjectsSection component
+// The updated ProjectsSection component (No changes)
 const ProjectsSection = () => (
   <div className="max-w-6xl mx-auto px-4 py-10">
     <h1 className="text-4xl font-semibold tracking-tight text-black border-b-2 border-gray-200 pb-4 mb-8">
@@ -375,6 +374,7 @@ const ProjectsSection = () => (
 
 );
 
+// ContactSection component (No changes)
 const ContactSection = () => {
   // State to hold all form data as a single object.
   const [formData, setFormData] = useState({
@@ -621,9 +621,30 @@ const ContactSection = () => {
     </div>
   );
 }
+// ---- NEW: Define animation properties ----
+const pageTransition = {
+  type: "tween",
+  ease: "anticipate",
+  duration: 0.6
+};
+
+const pageVariants = {
+  initial: {
+    opacity: 0,
+    y: 20
+  },
+  in: {
+    opacity: 1,
+    y: 0
+  },
+  out: {
+    opacity: 0,
+    y: -20
+  }
+};
 
 
-// Main App component to display the entire application
+// ---- UPDATED: Main App component to display the entire application ----
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
 
@@ -643,9 +664,24 @@ export default function App() {
   return (
     <div className="bg-[#f3f3f3] min-h-screen flex flex-col font-sans">
       <Header setActiveSection={setActiveSection} />
-      <main className="flex-grow flex items-center justify-center p-8 mt-16">
-        {renderContent()}
+      
+      <main className="flex-grow flex items-center justify-center p-8 mt-16 w-full">
+        <AnimatePresence mode="wait">
+          <motion.div
+            // The key is crucial for AnimatePresence to detect component changes
+            key={activeSection}
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+            className="w-full"
+          >
+            {renderContent()}
+          </motion.div>
+        </AnimatePresence>
       </main>
+
       <Footer />
     </div>
   );
