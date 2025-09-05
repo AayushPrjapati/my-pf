@@ -376,6 +376,40 @@ const ProjectsSection = () => (
 );
 
 const ContactSection = () => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const data = {
+      "first-name": document.getElementById("first-name").value,
+      "last-name": document.getElementById("last-name").value,
+      "company": document.getElementById("company").value,
+      "email": document.getElementById("email").value,
+      "country": document.getElementById("country").value,
+      "phone-number": document.getElementById("phone-number").value,
+      "message": document.getElementById("message").value,
+    };
+
+     try {
+      await fetch("https://script.google.com/macros/s/AKfycbxTyih-kwcUvnPKzC5EkV6tfKz5fJieef_XYMHAnkysF6Rsa3lipr1VWbtq66_0YeBM/exec", {
+        method: "POST",
+        mode: "no-cors", // important for Google Apps Script
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      alert("Form submitted successfully!");
+    } catch (error) {
+      alert("Something went wrong!");
+      console.error(error);
+    }
+
+    setLoading(false); // reset button
+  };
 
   return (
     // Main container with a minimal background color and reduced vertical padding
@@ -386,7 +420,7 @@ const ContactSection = () => {
         <p className="mt-1 text-base text-gray-800">✨ “Let’s build something amazing together — feel free to reach out!”</p>
       </div>
       {/* Form element with reduced top margin */}
-      <form action="#" method="POST" className="mx-auto mt-4 max-w-xl">
+      <form onSubmit={handleSubmit} className="mx-auto mt-4 max-w-xl">
         {/* Grid layout for form fields, reduced gap */}
         <div className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
           {/* First Name field */}
@@ -486,37 +520,21 @@ const ContactSection = () => {
               />
             </div>
           </div>
-          {/* Privacy policy checkbox */}
-          <div className="flex gap-x-4 sm:col-span-2">
-            <div className="flex h-6 items-center">
-              <div className="group relative inline-flex w-8 shrink-0 rounded-full bg-black/5 p-px outline-offset-2 outline-indigo-500 ring-1 ring-inset ring-black/10 transition-colors duration-200 ease-in-out has-[:checked]:bg-indigo-500 has-[:focus-visible]:outline has-[:focus-visible]:outline-2">
-                <span className="size-4 rounded-full bg-white shadow-sm ring-1 ring-white/5 transition-transform duration-200 ease-in-out group-has-[:checked]:translate-x-3.5"></span>
-                <input
-                  id="agree-to-policies"
-                  type="checkbox"
-                  name="agree-to-policies"
-                  aria-label="Agree to policies"
-                  className="absolute inset-0 appearance-none focus:outline-none"
-                />
-              </div>
-            </div>
-            <label htmlFor="agree-to-policies" className="text-sm/6 text-gray-800">
-              By selecting this, you agree to our{' '}
-              <a href="#" className="whitespace-nowrap font-semibold text-indigo-400">
-                privacy policy
-              </a>
-              .
-            </label>
-          </div>
+          
         </div>
         {/* Submit button */}
         <div className="mt-6">
           <button
-            type="submit"
-            className="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-          >
-            Let's talk
-          </button>
+          type="submit"
+          disabled={loading}
+          className={`block w-full rounded-md px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
+            loading
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-indigo-500 hover:bg-indigo-400 focus-visible:outline-indigo-500"
+          }`}
+        >
+          {loading ? "Sending..." : "Let's talk"}
+        </button>
         </div>
       </form>
     </div>
