@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React,{ useState, useEffect } from 'react';
 // Import motion and AnimatePresence from framer-motion
 import { motion, AnimatePresence } from 'framer-motion';
 import { CodeXml, Mail, Phone, Linkedin, Github, Twitter, MapPin, Calendar, GraduationCap, Briefcase, Code, Globe, User } from 'lucide-react';
@@ -40,10 +40,10 @@ const Header = ({ setActiveSection }) => {
           </button>
           <span className="text-gray-600">|</span>
           <button
-            onClick={() => setActiveSection('portfolio')}
+            onClick={() => setActiveSection('home')}
             className="text-base hover:text-orange-500"
           >
-            Portfolio
+            Home
           </button>
         </div>
         {/* Mobile menu button */}
@@ -92,7 +92,7 @@ const Footer = () => (
 
       {/* Copyright */}
       <div className="flex flex-col space-y-1 md:text-right md:ml-auto">
-        <span className="font-bold md-hidden">Copyright</span>
+        <span className="font-bold md-hidden"></span>
         <p>
           &copy; 2025 Aayush Prajapati.<br />Portfolio Website.
         </p>
@@ -147,21 +147,21 @@ const HomeSection = ({ setActiveSection }) => {
           <div className="flex justify-center lg:justify-start space-x-4 mt-6">
             <button
               onClick={() => setActiveSection('resume')}
-              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-all duration-700 hover:duration-300 hover:ease-out transform hover:scale-105 ring-2 ring-orange-400 bg-orange-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-all duration-700 hover:duration-100 hover:ease-out transform hover:scale-105 ring-2 ring-orange-400 bg-orange-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
               style={{ transitionDelay: '0.4s' }}
             >
               Resume
             </button>
             <button
               onClick={() => setActiveSection('projects')}
-              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-all duration-700 hover:duration-300 hover:ease-out transform hover:scale-105 ring-2 ring-red-400 bg-red-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-all duration-700 hover:duration-100 hover:ease-out transform hover:scale-105 ring-2 ring-red-400 bg-red-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
               style={{ transitionDelay: '0.6s' }}
             >
               Projects
             </button>
             <button
               onClick={() => setActiveSection('contact')}
-              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-all duration-700 hover:duration-300 hover:ease-out transform hover:scale-105 ring-2 ring-cyan-400 bg-cyan-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-all duration-700 hover:duration-100 hover:ease-out transform hover:scale-105 ring-2 ring-cyan-400 bg-cyan-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
               style={{ transitionDelay: '0.8s' }}
             >
               Contact
@@ -621,68 +621,127 @@ const ContactSection = () => {
     </div>
   );
 }
-// ---- NEW: Define animation properties ----
-const pageTransition = {
-  type: "tween",
-  ease: "anticipate",
-  duration: 0.6
+
+
+export default function App() {
+    const [page, setPage] = useState({ section: 'home', direction: 0 });
+    // UPDATED: Added 'portfolio' to the section order
+    const sectionOrder = ['home', 'resume', 'projects', 'portfolio', 'contact'];
+    const prevSectionRef = React.useRef('home');
+
+    useEffect(() => {
+        prevSectionRef.current = page.section;
+    });
+    const prevSection = prevSectionRef.current;
+
+    const handleSectionChange = (newSection) => {
+        if (newSection === page.section) return;
+        window.scrollTo(0, 0); // Scroll to top on section change
+        const currentIndex = sectionOrder.indexOf(page.section);
+        const newIndex = sectionOrder.indexOf(newSection);
+        let direction = 0;
+        if (currentIndex !== -1 && newIndex !== -1) {
+            direction = newIndex > currentIndex ? 1 : -1;
+        }
+        setPage({ section: newSection, direction: direction });
+    };
+
+const getVariants = () => {
+  const from = prevSection;   // previous section
+  const to = page.section;    // current section
+
+  // Common transition config
+  const slowTrans = { type: 'tween', duration: 0.3, ease: "easeInOut" };
+
+  // Any → Contact (contact slides in from top, leaves downward)
+  if (to === "contact") {
+    return {
+      initial: { y: "-100%", opacity: 0 },  // starts above
+      in: { y: 0, opacity: 1, transition: slowTrans }, // enters to center
+      out: { y: "-100%", opacity: 0, transition: slowTrans }, // exits downward
+    };
+  }
+
+  // Contact → Any (contact slides up while next content fades from center)
+  if (from === "contact") {
+    return {
+      initial: { scale: 0.8, opacity: 0 }, // next page starts small
+      in: { scale: 1, opacity: 1, transition: slowTrans }, // grows to full size
+      out: { y: 0, opacity: 0, transition: slowTrans }, // contact moves upward
+    };
+  }
+
+  // Home → Any (except contact) (fade + scale transition)
+  if (from === "home" && to !== "contact") {
+    return {
+      initial: { opacity: 0, scale: 0.8 }, // next page starts smaller & hidden
+      in: { opacity: 1, scale: 1, transition: slowTrans }, // fades and scales in
+      out: { opacity: 0, scale: 0.8, transition: slowTrans }, // fades out with scale
+    };
+  }
+
+  // Resume → Projects (slide left transition)
+  if (from === "resume" && to === "projects") {
+    return {
+      initial: { x: "100%", opacity: 0 }, // starts off-screen right
+      in: { x: 0, opacity: 1, transition: slowTrans }, // slides into center
+      out: { x: "-100%", opacity: 0, transition: slowTrans }, // slides left
+    };
+  }
+
+  // Projects → Resume (slide right transition)
+  if (from === "projects" && to === "resume") {
+    return {
+      initial: { x: "-100%", opacity: 0 }, // starts off-screen left
+      in: { x: 0, opacity: 1, transition: slowTrans }, // slides into center
+      out: { x: "100%", opacity: 0, transition: slowTrans }, // slides right
+    };
+  }
+
+  // Default fade (used when no specific case matches)
+  return {
+    initial: { opacity: 0 },
+    in: { opacity: 1, transition: slowTrans },
+    out: { opacity: 0, transition: slowTrans },
+  };
 };
 
-const pageVariants = {
-  initial: {
-    opacity: 0,
-    y: 20
-  },
-  in: {
-    opacity: 1,
-    y: 0
-  },
-  out: {
-    opacity: 0,
-    y: -20
+
+// Helper function to render section components based on current page
+const renderContent = () => {
+  switch (page.section) {
+    case 'resume': return <ResumeSection />;
+    case 'projects': return <ProjectsSection />;
+    case 'contact': return <ContactSection />;
+    default: return <HomeSection setActiveSection={handleSectionChange} />;
   }
 };
 
 
-// ---- UPDATED: Main App component to display the entire application ----
-export default function App() {
-  const [activeSection, setActiveSection] = useState('home');
+return (
+  <div className="bg-[#f3f3f3] min-h-screen flex flex-col font-sans">
+    {/* Header (navigation) */}
+    <Header setActiveSection={handleSectionChange} />
 
-  const renderContent = () => {
-    switch (activeSection) {
-      case 'resume':
-        return <ResumeSection />;
-      case 'projects':
-        return <ProjectsSection />;
-      case 'contact':
-        return <ContactSection />;
-      default:
-        return <HomeSection setActiveSection={setActiveSection} />;
-    }
-  };
+    {/* Main content area with animated transitions */}
+    <main className="flex-grow flex items-center justify-center p-8 mt-16">
+      <AnimatePresence mode="wait">
+        <motion.div 
+          key={page.section}            // unique key per section (important for AnimatePresence)
+          variants={getVariants()}      // select animation based on prev/next section
+          initial="initial"             // starting state
+          animate="in"                  // enter animation
+          exit="out"                    // exit animation
+          className="w-full flex justify-center"
+        >
+          {renderContent()}             {/* Render the appropriate section */}
+        </motion.div>
+      </AnimatePresence>
+    </main>
 
-  return (
-    <div className="bg-[#f3f3f3] min-h-screen flex flex-col font-sans">
-      <Header setActiveSection={setActiveSection} />
-      
-      <main className="flex-grow flex items-center justify-center p-8 mt-16 w-full">
-        <AnimatePresence mode="wait">
-          <motion.div
-            // The key is crucial for AnimatePresence to detect component changes
-            key={activeSection}
-            initial="initial"
-            animate="in"
-            exit="out"
-            variants={pageVariants}
-            transition={pageTransition}
-            className="w-full"
-          >
-            {renderContent()}
-          </motion.div>
-        </AnimatePresence>
-      </main>
-
-      <Footer />
-    </div>
-  );
+    {/* Footer (always visible) */}
+    <Footer />
+  </div>
+);
 }
+
