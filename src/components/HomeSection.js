@@ -44,27 +44,30 @@ const HomeSection = ({ setActiveSection }) => {
 
           {/* Action Buttons */}
           <div className="flex justify-center lg:justify-start space-x-4 mt-6">
+            {/* Resume */}
             <button
               onClick={() => setActiveSection('resume')}
-              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-all duration-700 hover:duration-100 hover:ease-out transform hover:scale-105 ring-2 ring-orange-400 bg-orange-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
-              style={{ transitionDelay: '0.4s' }}
+              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold ring-2 ring-orange-400 bg-orange-500 text-white transform transition ease-out duration-500 delay-[400ms] hover:delay-0 hover:scale-105 hover:bg-white hover:text-black ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
             >
               Resume
             </button>
+
+            {/* Projects */}
             <button
               onClick={() => setActiveSection('projects')}
-              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-all duration-700 hover:duration-100 hover:ease-out transform hover:scale-105 ring-2 ring-red-400 bg-red-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
-              style={{ transitionDelay: '0.6s' }}
+              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold ring-2 ring-red-400 bg-red-500 text-white transform transition ease-out duration-500 delay-[600ms] hover:delay-0 hover:scale-105 hover:bg-white hover:text-black ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
             >
               Projects
             </button>
+
+            {/* Contact */}
             <button
               onClick={() => setActiveSection('contact')}
-              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold transition-all duration-700 hover:duration-100 hover:ease-out transform hover:scale-105 ring-2 ring-cyan-400 bg-cyan-500 hover:bg-white hover:text-black text-white ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
-              style={{ transitionDelay: '0.8s' }}
+              className={`w-28 h-28 rounded-full flex items-center justify-center font-semibold ring-2 ring-cyan-400 bg-cyan-500 text-white transform transition ease-out duration-500 delay-[800ms] hover:delay-0 hover:scale-105 hover:bg-white hover:text-black ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
             >
               Contact
             </button>
+
           </div>
         </div>
       </div>
