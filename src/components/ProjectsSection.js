@@ -29,7 +29,7 @@ const ProjectsSection = () => (
         className="block bg-gray-200 rounded-lg flex items-center justify-center h-64 overflow-hidden hover:bg-gray-300 transition"
       >
         <img
-          src="/InsightCarePreview.png"
+          src="./InsightCarePreview.png"
           alt="Project Preview"
           className="object-cover w-full h-full"
         />
